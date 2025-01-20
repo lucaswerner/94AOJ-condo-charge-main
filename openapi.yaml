@@ -1,0 +1,479 @@
+---
+openapi: 3.1.0
+paths:
+  /api/v1/charge:
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PostChargeDTO"
+        required: true
+      responses:
+        "200":
+          description: OK
+      summary: Post Station
+      tags:
+      - Charge Resource
+    get:
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ChargeDTO"
+      summary: Get All
+      tags:
+      - Charge Resource
+  /api/v1/charge/{id}:
+    patch:
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: OK
+      summary: Register End
+      tags:
+      - Charge Resource
+    get:
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: OK
+      summary: Get By Id
+      tags:
+      - Charge Resource
+  /api/v1/condominiums:
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PostCondominiumDTO"
+        required: true
+      responses:
+        "200":
+          description: OK
+      summary: Register Condominium
+      tags:
+      - Condominium Resource
+    get:
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/CondominiumDTO"
+      summary: Get All Condominiums
+      tags:
+      - Condominium Resource
+  /api/v1/condominiums/{cnpj}:
+    put:
+      parameters:
+      - name: cnpj
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PutCondominiumDTO"
+        required: true
+      responses:
+        "200":
+          description: OK
+      summary: Get Condominium By Cnpj
+      tags:
+      - Condominium Resource
+    get:
+      parameters:
+      - name: cnpj
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+      summary: Get Condominium By Cnpj
+      tags:
+      - Condominium Resource
+  /api/v1/condominiums/{cnpj}/stations:
+    post:
+      parameters:
+      - name: cnpj
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PostStationDTO"
+        required: true
+      responses:
+        "200":
+          description: OK
+      summary: Register New Station
+      tags:
+      - Condominium Resource
+    get:
+      parameters:
+      - name: cnpj
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/StationDTO"
+      summary: Get All Stations
+      tags:
+      - Condominium Resource
+  /api/v1/condominiums/{cnpj}/stations/{stationId}:
+    patch:
+      parameters:
+      - name: cnpj
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: stationId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PatchStationDTO"
+        required: true
+      responses:
+        "200":
+          description: OK
+      summary: Update Station
+      tags:
+      - Condominium Resource
+    get:
+      parameters:
+      - name: cnpj
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: stationId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+      summary: Get Station By Id
+      tags:
+      - Condominium Resource
+  /api/v1/condominiums/{cnpj}/stations/{stationId}/charges:
+    post:
+      parameters:
+      - name: cnpj
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: stationId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PostChargeDTO"
+        required: true
+      responses:
+        "200":
+          description: OK
+      summary: Register New Charge
+      tags:
+      - Condominium Resource
+    get:
+      parameters:
+      - name: cnpj
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: stationId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ChargeDTO"
+      summary: Get All Station Charges
+      tags:
+      - Condominium Resource
+  /api/v1/condominiums/{cnpj}/stations/{stationId}/charges/{chargeId}:
+    patch:
+      parameters:
+      - name: chargeId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: cnpj
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: stationId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PatchChargeDTO"
+        required: true
+      responses:
+        "200":
+          description: OK
+      summary: Patch Charge Info
+      tags:
+      - Condominium Resource
+  /api/v1/station:
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PostStationDTO"
+        required: true
+      responses:
+        "200":
+          description: OK
+      summary: Post Station
+      tags:
+      - Station Resource
+    get:
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/StationDTO"
+      summary: Get All
+      tags:
+      - Station Resource
+  /api/v1/station/{id}:
+    patch:
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PatchStationDTO"
+        required: true
+      responses:
+        "200":
+          description: OK
+      summary: Patch Station
+      tags:
+      - Station Resource
+    get:
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+      summary: Get By Id
+      tags:
+      - Station Resource
+components:
+  schemas:
+    ChargeDTO:
+      type: object
+      properties:
+        chargeId:
+          type: integer
+          format: int64
+        userId:
+          type: integer
+          format: int64
+        status:
+          $ref: "#/components/schemas/ChargeStatus"
+        chargeStart:
+          $ref: "#/components/schemas/LocalDateTime"
+        chargeEndPreview:
+          $ref: "#/components/schemas/LocalDateTime"
+        chargeEnd:
+          $ref: "#/components/schemas/LocalDateTime"
+        energyConsumption:
+          type: integer
+          format: int32
+        station:
+          $ref: "#/components/schemas/StationDTO"
+    ChargeStatus:
+      type: string
+      enum:
+      - CHARGING
+      - READY
+    CondominiumDTO:
+      type: object
+      properties:
+        cnpj:
+          type: string
+        name:
+          type: string
+        address:
+          type: string
+    LocalDateTime:
+      type: string
+      format: date-time
+      examples:
+      - 2022-03-10T12:15:50
+    PatchChargeDTO:
+      type: object
+      properties:
+        chargeEndPreview:
+          $ref: "#/components/schemas/LocalDateTime"
+        chargeEnd:
+          $ref: "#/components/schemas/LocalDateTime"
+        energyConsumption:
+          type: integer
+          format: int32
+        status:
+          $ref: "#/components/schemas/ChargeStatus"
+    PatchStationDTO:
+      type: object
+      properties:
+        number:
+          type: integer
+          format: int32
+        status:
+          $ref: "#/components/schemas/StationStatus"
+    PostChargeDTO:
+      type: object
+      properties:
+        userId:
+          type: integer
+          format: int64
+        stationId:
+          type: string
+    PostCondominiumDTO:
+      type: object
+      properties:
+        cnpj:
+          type: string
+        name:
+          type: string
+        address:
+          type: string
+    PostStationDTO:
+      type: object
+      required:
+      - condominiumId
+      - number
+      properties:
+        condominiumId:
+          type: integer
+          format: int32
+          minimum: 1
+        number:
+          type: integer
+          format: int32
+          minimum: 1
+    PutCondominiumDTO:
+      type: object
+      properties:
+        name:
+          type: string
+        address:
+          type: string
+    StationDTO:
+      type: object
+      properties:
+        id:
+          type: string
+        condominiumId:
+          type: integer
+          format: int32
+        number:
+          type: integer
+          format: int32
+        status:
+          $ref: "#/components/schemas/StationStatus"
+        creationDt:
+          $ref: "#/components/schemas/LocalDateTime"
+        lastUpdate:
+          $ref: "#/components/schemas/LocalDateTime"
+        condominiumCnpj:
+          type: string
+    StationStatus:
+      type: string
+      enum:
+      - ACTIVE
+      - MAINTENANCE_REQUIRED
+      - DEACTIVATED
+info:
+  title: Condo Charge API (development)
+  version: 1.0.0
+  description: Api responsible for registering charging stations and its charges
+  termsOfService: MIT
+  contact:
+    name: Lucas Werner
+    email: lucaswerner26@gmail.com
+    url: http://no-contact.com/contact
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
