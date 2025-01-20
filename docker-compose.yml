@@ -1,0 +1,39 @@
+name: condo-charge
+services:
+  condo-charge-charging-listener:
+    image: werner26/condo-charge-charging-listener-jvm
+    container_name: condo-charge-charging-listener
+    networks:
+      - my-network
+
+  condo-charge-chargers:
+    image: werner26/condo-charge-chargers-jvm
+    container_name: condo-charge-chargers
+    depends_on:
+      - postgres-condo-charge
+    ports:
+      - "8090:8080"
+    networks:
+      - my-network
+  
+  postgres-condo-charge:
+    image: postgres:latest
+    container_name: condo-charge-db-test
+    environment:
+      - POSTGRES_USER=condo
+      - POSTGRES_PASSWORD=mycondocharge
+      - POSTGRES_DB=condo_charge_db
+    volumes:
+      - ./config/postgree/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432"
+    networks:
+      - my-network
+
+networks:
+  my-network:
+    name: my-network
+    driver: bridge
+
+include:
+  - ./config/kafka/docker-compose.yml

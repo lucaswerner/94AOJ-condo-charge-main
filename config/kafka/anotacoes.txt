@@ -1,0 +1,10 @@
+docker compose up -d
+docker exec -it redpanda-0 rpk cluster info
+docker exec -it redpanda-0 rpk topic create chat-room
+
+#produce
+docker exec -it redpanda-0 rpk topic produce chat-room
+
+#consume
+docker exec -it redpanda-0 rpk topic consume chat-room --num 1
+

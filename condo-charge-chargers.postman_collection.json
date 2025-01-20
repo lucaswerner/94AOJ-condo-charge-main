@@ -1,0 +1,522 @@
+{
+	"info": {
+		"_postman_id": "95d6446a-0d8e-40aa-a2a4-eb8dd40eea5f",
+		"name": "condo-charge-chargers",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "579862"
+	},
+	"item": [
+		{
+			"name": "charge",
+			"item": [
+				{
+					"name": "find-all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/api/v1/charge",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"api",
+								"v1",
+								"charge"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find-by-id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/api/v1/charge/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"api",
+								"v1",
+								"charge",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "new-charging",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\": 1,\r\n    \"stationId\": \"322a8f00-843d-4ee7-9d4e-076235cbe0b1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8090/api/v1/charge",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"api",
+								"v1",
+								"charge"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "stations",
+			"item": [
+				{
+					"name": "find-all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/api/v1/station",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"api",
+								"v1",
+								"station"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find-by-id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/api/v1/station/322a8f00-843d-4ee7-9d4e-076235cbe0b1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"api",
+								"v1",
+								"station",
+								"322a8f00-843d-4ee7-9d4e-076235cbe0b1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update-some-values",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"number\": 2,\r\n    \"status\": \"MAINTENANCE_REQUIRED\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8090/api/v1/station/322a8f00-843d-4ee7-9d4e-076235cbe0b1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"api",
+								"v1",
+								"station",
+								"322a8f00-843d-4ee7-9d4e-076235cbe0b1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "new-station",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"condominiumId\": 10,\r\n    \"number\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8090/api/v1/station",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"api",
+								"v1",
+								"station"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "condominiums",
+			"item": [
+				{
+					"name": "stations",
+					"item": [
+						{
+							"name": "charges",
+							"item": [
+								{
+									"name": "get-all-charges",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:8090/api/v1/condominiums/12312312300012/stations/6cc501c3-6a23-4bb4-a5c1-de6d44ef66fd/charges",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8090",
+											"path": [
+												"api",
+												"v1",
+												"condominiums",
+												"12312312300012",
+												"stations",
+												"6cc501c3-6a23-4bb4-a5c1-de6d44ef66fd",
+												"charges"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "register-new-charge",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"userId\": 1\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:8090/api/v1/condominiums/12312312300012/stations/6cc501c3-6a23-4bb4-a5c1-de6d44ef66fd/charges",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8090",
+											"path": [
+												"api",
+												"v1",
+												"condominiums",
+												"12312312300012",
+												"stations",
+												"6cc501c3-6a23-4bb4-a5c1-de6d44ef66fd",
+												"charges"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "update-charge-status",
+									"request": {
+										"method": "PATCH",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"chargeEndPreview\": \"2025-01-19T20:09:22.093714\",\r\n    \"chargeEnd\": \"2025-01-19T22:09:22.093714\",\r\n    \"energyConsumption\": 230,\r\n    \"status\": \"READY\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:8090/api/v1/condominiums/12312312300012/stations/7ce00e15-2084-4447-8a30-d99c917427fc/charges/1",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8090",
+											"path": [
+												"api",
+												"v1",
+												"condominiums",
+												"12312312300012",
+												"stations",
+												"7ce00e15-2084-4447-8a30-d99c917427fc",
+												"charges",
+												"1"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "get-all-stations",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8090/api/v1/condominiums/12312312300012/stations",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8090",
+									"path": [
+										"api",
+										"v1",
+										"condominiums",
+										"12312312300012",
+										"stations"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get-station-by-id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8090/api/v1/condominiums/12312312300012/stations/37adce0b-4a57-4696-8d73-21503b6546e3",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8090",
+									"path": [
+										"api",
+										"v1",
+										"condominiums",
+										"12312312300012",
+										"stations",
+										"37adce0b-4a57-4696-8d73-21503b6546e3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update-station",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"number\": 3,\r\n    \"status\": \"ACTIVE\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8090/api/v1/condominiums/12312312300012/stations/e8d37f27-7889-4b93-8580-39eb960a1785",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8090",
+									"path": [
+										"api",
+										"v1",
+										"condominiums",
+										"12312312300012",
+										"stations",
+										"e8d37f27-7889-4b93-8580-39eb960a1785"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "register-new-station",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"condominiumId\": 10,\r\n    \"number\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8090/api/v1/condominiums/12312312300012/stations",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8090",
+									"path": [
+										"api",
+										"v1",
+										"condominiums",
+										"12312312300012",
+										"stations"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "get-all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/api/v1/condominiums",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"api",
+								"v1",
+								"condominiums"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-by-cnpj",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/api/v1/condominiums/12312312300012",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"api",
+								"v1",
+								"condominiums",
+								"12312312300012"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-by-cnpj Copy",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Vila Cruzeiro\",\r\n    \"address\": \"Avenida Ramos, 123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8090/api/v1/condominiums/12312312300012",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"api",
+								"v1",
+								"condominiums",
+								"12312312300012"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "register-new-condominium",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cnpj\": \"12312312300012\",\r\n    \"name\": \"Vila Sul\",\r\n    \"address\": \"Rua São Tomé\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8090/api/v1/condominiums",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"api",
+								"v1",
+								"condominiums"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
